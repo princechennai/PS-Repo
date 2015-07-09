@@ -16,4 +16,4 @@ Install-windowsfeature AD-domain-services
 Import-Module ADDSDeployment
 
 #To Promoto server as Domain Controller first on new forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName "example.com" -DomainNetbiosName "example" -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2008" -DomainName "example.com" -DomainNetbiosName "example" -ForestMode "Win2008" -InstallDns:$false -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$true -SysvolPath "C:\Windows\SYSVOL" -Force:$true

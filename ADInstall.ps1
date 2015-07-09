@@ -7,7 +7,7 @@
 #install-addsforest
 
 #To get the name of available Serives
-get-windowsfeature
+#get-windowsfeature
 
 #To Install ADDS
 Install-windowsfeature AD-domain-services

@@ -10,7 +10,7 @@
 #get-windowsfeature
 
 #To Install ADDS
-Install-windowsfeature AD-domain-services
+Install-windowsfeature -name AD-Domain-Services –IncludeManagementTools
 
 #To install ADDSDeployment
 Import-Module ADDSDeployment

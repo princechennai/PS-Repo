@@ -1,5 +1,5 @@
-$sourcex86 = 'http://javadl.sun.com/webapps/download/AutoDL?BundleId=79063' #Java 7 u 25 x86
-$sourcex64 = 'http://javadl.sun.com/webapps/download/AutoDL?BundleId=79065' #Java 7 u 25 x64
+$sourcex86 = 'http://javadl.sun.com/webapps/download/AutoDL?BundleId=95501' #Java 8 u 25 x86
+$sourcex64 = 'http://javadl.sun.com/webapps/download/AutoDL?BundleId=111689' #Java 8 u 25 x64
 
 $64bit = $false
 if(Test-Path 'C:\Program Files (x86)' -PathType Container){
@@ -39,3 +39,4 @@ CMD /c $destinationx86 /s
 if($64bit){
     CMD /c $destinationx64 /s
 }
+Write-Output Task Completed

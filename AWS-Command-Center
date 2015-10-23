@@ -1,0 +1,15 @@
+#Set Environment Variables
+[Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files (x86)\Java\jre1.8.0_65", "Machine")
+[Environment]::SetEnvironmentVariable("EC2_HOME", "C:\AWS\ec2-api-tools-1.7.5.1", "Machine")
+[Environment]::SetEnvironmentVariable("AWS_ACCESS_KEY", "XXXXXXXXXXXX", "Machine")
+[Environment]::SetEnvironmentVariable("AWS_SECRET_KEY", "xxxxXXXXxxxxxXXXXXxxxxxxxx", "Machine")
+[Environment]::SetEnvironmentVariable("EC2_URL", "https://ec2.eu-west-1.amazonaws.com", "Machine")
+
+#Add Path Variable
+Clear-Host
+$AddedLocation =";%JAVA_HOME%\bin;%EC2_HOME%\bin"
+$Reg = "Registry::HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+$OldPath = (Get-ItemProperty -Path "$Reg" -Name PATH).Path
+$NewPath= $AddedLocation + ’;’ + $OldPath
+Set-ItemProperty -Path "$Reg" -Name PATH –Value $NewPath
+

@@ -23,3 +23,6 @@ echo "ABOUT = $about" | Add-Content -Path C:\tmp\info.ini
 echo "HOSTNAME = $hostname" | Add-Content -Path C:\tmp\info.ini
 echo "USER = $username" | Add-Content -Path C:\tmp\info.ini
 echo "IPADDRESS = $ipaddress" | Add-Content -Path C:\tmp\info.ini
+
+#Set Environment Variable at Machine Level
+[Environment]::SetEnvironmentVariable("TestVariableName", "My Value", "Machine")

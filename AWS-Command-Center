@@ -1,9 +1,15 @@
+#Collect Variables
+$JAVAHOME = Read-Host "Please input your Java path"
+$AWSKEY = Read-Host "Please input your AWS ACCESS KEY"
+$AWSSEC = Read-Host "Please input your AWS SECRET KEY"
+$EC2URL = Read-Host "Please input your EC2 URL"
+
 #Set Environment Variables
-[Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files (x86)\Java\jre1.8.0_65", "Machine")
+[Environment]::SetEnvironmentVariable("JAVA_HOME", "$JAVAHOME", "Machine")
 [Environment]::SetEnvironmentVariable("EC2_HOME", "C:\AWS\ec2-api-tools-1.7.5.1", "Machine")
-[Environment]::SetEnvironmentVariable("AWS_ACCESS_KEY", "XXXXXXXXXXXX", "Machine")
-[Environment]::SetEnvironmentVariable("AWS_SECRET_KEY", "xxxxXXXXxxxxxXXXXXxxxxxxxx", "Machine")
-[Environment]::SetEnvironmentVariable("EC2_URL", "https://ec2.eu-west-1.amazonaws.com", "Machine")
+[Environment]::SetEnvironmentVariable("AWS_ACCESS_KEY", "$AWSKEY", "Machine")
+[Environment]::SetEnvironmentVariable("AWS_SECRET_KEY", "$AWSSEC", "Machine")
+[Environment]::SetEnvironmentVariable("EC2_URL", "$EC2URL", "Machine")
 
 #Add Path Variable
 Clear-Host
@@ -13,3 +19,16 @@ $OldPath = (Get-ItemProperty -Path "$Reg" -Name PATH).Path
 $NewPath= $AddedLocation + ’;’ + $OldPath
 Set-ItemProperty -Path "$Reg" -Name PATH –Value $NewPath
 
+#Install API Tools
+#Step 1 - Download API Tools
+Invoke-WebRequest http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip -OutFile C:\AWS\ec2-api-tools.zip
+
+#Step 2 - Unzip the package
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+function Unzip
+{
+    param([string]$zipfile, [string]$outpath)
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+Unzip "C:\AWS\ec2-api-tools.zip" "C:\AWS\"

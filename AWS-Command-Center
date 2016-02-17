@@ -1,5 +1,5 @@
 #Collect Variables
-$JAVAHOME = Read-Host "Please input your Java path"
+$JAVAHOME = Read-Host "Please input your Java path. For Ex (C:\Program Files(x86)\Java\bin)"
 $AWSKEY = Read-Host "Please input your AWS ACCESS KEY"
 $AWSSEC = Read-Host "Please input your AWS SECRET KEY"
 $EC2URL = Read-Host "Please input your EC2 URL"
